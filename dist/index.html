@@ -13,6 +13,7 @@
                 <span>Name</span><span>Task</span>
             </li>
         </ul>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
             var lists = []
             updateList()
@@ -20,18 +21,25 @@
                 var name = document.getElementById("name");
                 var task = document.getElementById("todo");
                 if(name.value || task.value){
-                    lists.push({name:name.value,task:task.value});
+                    axios({
+                    method: 'post',
+                    url: 'http://localhost:9000/.netlify/functions/todo/tasks',
+                    data: {name:name.value,task:task.value}
+                    });
                 }
-                
-                name.value='';task.value='';
-                lists.map(li=>{
-                    console.log(li);
-                })
                 updateList();
             }
             function updateList(){
                 var ul = document.getElementById("tasks");
                 ul.innerHTML='';
+                axios.get('http://localhost:9000/.netlify/functions/todo/tasks')
+                    .then((response) => {
+                        console.log(response.data);
+                        console.log(response.status);
+                        console.log(response.statusText);
+                        console.log(response.headers);
+                        console.log(response.config);
+                    });
                 lists.map(list => {
                     var li = document.createElement("li");
                     var span = document.createElement("span");
