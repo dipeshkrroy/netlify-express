@@ -27,7 +27,7 @@ router.get('/users',(req, res, next)=>{
 });
 router.post('/users',(req, res, next)=>{
     issues.push(req.body);
-    fs.writeFile('./data/db.json',JSON.stringify(issues,null,2), 'utf8', err => {
+    fs.writeFile('/data/db.json',JSON.stringify(issues,null,2), 'utf8', err => {
         if (err) {
           throw err;
         }
