@@ -2,6 +2,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const fs = require('fs');
 const issues = require('../data/db.json');
+const file = require('../data/db.json');
 
 const app = express();
 const router = express.Router();
@@ -27,7 +28,7 @@ router.get('/users',(req, res, next)=>{
 });
 router.post('/users',(req, res, next)=>{
     issues.push(req.body);
-    fs.writeFile('/data/db.json',JSON.stringify(issues,null,2), 'utf8', err => {
+    fs.writeFile('file',JSON.stringify(issues,null,2), 'utf8', err => {
         if (err) {
           throw err;
         }
