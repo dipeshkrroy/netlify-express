@@ -21,11 +21,7 @@
                 var name = document.getElementById("name");
                 var task = document.getElementById("todo");
                 if(name.value || task.value){
-                    axios({
-                    method: 'post',
-                    url: 'https://trusting-yonath-96dd2d.netlify.app/.netlify/functions/todo/tasks',
-                    data: {name:name.value,task:task.value}
-                    });
+                    axios.post('https://trusting-yonath-96dd2d.netlify.app/.netlify/functions/todo/tasks', {name:name.value,task:task.value});
                 }
                 updateList();
             }
