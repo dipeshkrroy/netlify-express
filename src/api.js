@@ -2,7 +2,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const fs = require('fs');
 const issues = require('../data/db.json');
-const file = require('../data/db.json');
+const file = require.resolve('../data/db.json');
 
 const app = express();
 const router = express.Router();
