@@ -35,18 +35,15 @@
                 axios.get('https://trusting-yonath-96dd2d.netlify.app/.netlify/functions/todo/tasks')
                     .then((response) => {
                         console.log(response.data);
-                        console.log(response.status);
-                        console.log(response.statusText);
-                        console.log(response.headers);
-                        console.log(response.config);
+                        response.data.tasks.map(list => {
+                                    var li = document.createElement("li");
+                                    var span = document.createElement("span");
+                                    li.appendChild(span.appendChild(document.createTextNode(list.name+":- ")))
+                                    li.appendChild(span.appendChild(document.createTextNode(list.task)))
+                                    ul.appendChild(li);
+                                })
                     });
-                lists.map(list => {
-                    var li = document.createElement("li");
-                    var span = document.createElement("span");
-                    li.appendChild(span.appendChild(document.createTextNode(list.name+":- ")))
-                    li.appendChild(span.appendChild(document.createTextNode(list.task)))
-                    ul.appendChild(li);
-                })
+                
                 
             }
         </script>
