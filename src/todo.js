@@ -16,7 +16,7 @@ router.get('/tasks',(req, res)=>{
 });
 router.post('/tasks',(req, res)=>{
     tasks.push(req.body);
-    fs.writeFile('./data/task.json',JSON.stringify(tasks,null,2), 'utf8', err => {
+    fs.writeFile('../data/task.json',JSON.stringify(tasks,null,2), 'utf8', err => {
         if (err) {
           throw err;
         }
